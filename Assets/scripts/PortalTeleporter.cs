@@ -7,7 +7,6 @@ public class PortalTeleporter : MonoBehaviour
    
     public CharacterController player;
     public Transform reciver;
-    public Transform playerCamera;
 
     private bool playerIsOverlapping = false;
 
@@ -35,10 +34,6 @@ public class PortalTeleporter : MonoBehaviour
                 }
                 rotationDiff += 90;
                 player.transform.Rotate(Vector3.up, rotationDiff);
-                Debug.Log("1: "+playerCamera.transform.rotation);
-                playerCamera.transform.rotation=Quaternion.Euler(0f, 20f,0f);
-                Debug.Log("2: " + playerCamera.transform.rotation);
-
 
                 Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
                 player.enabled = false;
