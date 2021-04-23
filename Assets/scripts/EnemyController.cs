@@ -22,7 +22,8 @@ public class EnemyController : MonoBehaviour
     public bool dead = false;
 
     //Attacking
-    public float timeBetweenAttacks;
+    public float timeBetweenAttacksMele;
+    public float timeBetweenAttacksDistance;
     bool alreadyAttacked;
     public GameObject projectile;
     private Vector3 PosProjectile;
@@ -187,7 +188,7 @@ public class EnemyController : MonoBehaviour
             //
             alreadyAttacked = true;
             StartCoroutine(AttackFalse());
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            Invoke(nameof(ResetAttack), timeBetweenAttacksDistance);
 
         }
             
@@ -220,7 +221,7 @@ public class EnemyController : MonoBehaviour
 
             //
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            Invoke(nameof(ResetAttack), timeBetweenAttacksMele);
 
         }
 
@@ -402,9 +403,6 @@ public class EnemyController : MonoBehaviour
         {
             atack.SetActive(false);
         }
-        
-
-
     }
     private IEnumerator AttackDistanceOn()
     {
@@ -420,10 +418,7 @@ public class EnemyController : MonoBehaviour
         else
         {
 
-        }
-
-    
-        
+        }  
     }
     private void takeDamage1()
     {

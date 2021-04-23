@@ -162,6 +162,7 @@ public class enemy2 : MonoBehaviour
     {
         if (playerInSightRange)
         {
+            walk = true;
             SetChase();
             enemySound.SetActive(true);
             return;
@@ -182,6 +183,11 @@ public class enemy2 : MonoBehaviour
             nearNode = true;
             return;
 
+        }else if(playerInSightRange && !playerInAttackRange)
+        {
+            idle = false;
+            walk = true;
+
         }
 
         agent.SetDestination(player.transform.position);
@@ -190,6 +196,7 @@ public class enemy2 : MonoBehaviour
             walk = false;
             AttackPlayer();
         }
+        
 
 
     }
@@ -259,6 +266,7 @@ public class enemy2 : MonoBehaviour
         //Make sure enemy doesn't move
         if (die == false)
         {
+            
             agent.SetDestination(transform.position);
 
             playerLook = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
