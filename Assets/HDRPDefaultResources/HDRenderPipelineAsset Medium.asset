@@ -217,7 +217,7 @@ MonoBehaviour:
     supportMotionVectors: 0
     supportRuntimeDebugDisplay: 0
     supportDitheringCrossFade: 0
-    supportTerrainHole: 0
+    supportTerrainHole: 1
     supportRayTracing: 0
     lightLoopSettings:
       cookieAtlasSize: 2048

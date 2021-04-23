@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -42,6 +43,8 @@ public class EnemyController : MonoBehaviour
     private float random;
     private float timeCounterCd = 0;
     private float cdTime = 0.5f;
+    private float cdTimeDead = 5f;
+    private bool coldownDead = false;
     private bool coldown = false;
 
 
@@ -51,7 +54,7 @@ public class EnemyController : MonoBehaviour
     Vector3 playerLook;
     private float timeCounter=0;
     public GameObject bossSound;
-    public GameObject portal;
+    
     public GameObject soul;
 
     private TriggerSFX sfx;
@@ -110,6 +113,7 @@ public class EnemyController : MonoBehaviour
         }
         animations();
         playerColdown();
+        playerColdown2();
 
 
         if (Soundon && timeCounter == 1 )
@@ -263,8 +267,8 @@ public class EnemyController : MonoBehaviour
 
     private void DestroyEnemy()
     {
-        portal.SetActive(true);
-        soul.SetActive(true);
+       
+       // soul.SetActive(true);
         dead = true;
         anim.puertaFinal();
         sfx.SemibossDead();
@@ -280,6 +284,17 @@ public class EnemyController : MonoBehaviour
             {
                 timeCounterCd = 0;
                 coldown = false;
+            }
+        }
+    }
+    public void playerColdown2()
+    {
+        if (coldownDead == true)
+        {
+            timeCounterCd += Time.deltaTime;
+            if (timeCounterCd >= cdTimeDead)
+            {
+                DestroyEnemy();
             }
         }
     }
