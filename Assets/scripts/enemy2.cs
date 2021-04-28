@@ -30,9 +30,7 @@ public class enemy2 : MonoBehaviour
     //GO animations 
     Vector3 playerLook;
     public GameObject enemySound;
-    public GameObject bossSound;
-    public GameObject portal;
-    public GameObject soul;
+
     private Puerta_final anim;
 
     //Enemy animations
@@ -53,6 +51,8 @@ public class enemy2 : MonoBehaviour
     private bool coldown = false;
     private float timeCounterCd = 0;
     private float cdTime = 0.5f;
+    private float atak;
+
 
     [Header("Patrol")]
     public float timeStopped = 1;
@@ -114,7 +114,8 @@ public class enemy2 : MonoBehaviour
                 attack = false;
                 dmg = false;
                 die = true;
-
+                transform.rotation = Quaternion.LookRotation(Vector3.zero);
+                
                 DestroyEnemy();
             }
         }
@@ -277,8 +278,10 @@ public class enemy2 : MonoBehaviour
 
         if (!alreadyAttacked && dmg == false && die ==false)
         {
-            idle = false;
-            attack = true;
+            walk = false;
+            idle = true;
+
+            atak = Random.Range(0.5f, 1f);
             //Attack code here
             StartCoroutine(AttackOn());
             
@@ -326,19 +329,7 @@ public class enemy2 : MonoBehaviour
 
     private void DestroyEnemy()
     {
-        if (semiboss)
-        {
-           
-            portal.SetActive(true);
-            soul.SetActive(true);
-            dead = true;
-            anim.puertaFinal();
-            sfx.SemibossDead();
-        }
-        else
-        {
-
-        }
+       
         Debug.Log(die);
         Destroy(gameObject);
 
@@ -448,14 +439,18 @@ public class enemy2 : MonoBehaviour
     }
     private IEnumerator AttackFalse()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(atak+0.6f);
         atack.SetActive(false);
         attack = false;
         idle = true;
     }
     private IEnumerator AttackOn()
     {
-        yield return new WaitForSeconds(0.3f);
+        
+        yield return new WaitForSeconds(atak);
+        idle = false;
+        attack = true;
+        yield return new WaitForSeconds(0.5f);
         //PosProjectile = new Vector3(transform.position.x, transform.position.y + yProject, transform.position.z);
         //Rigidbody rb = Instantiate(projectile, PosProjectile + (transform.forward * 1.2f), Quaternion.identity).GetComponent<Rigidbody>();
 

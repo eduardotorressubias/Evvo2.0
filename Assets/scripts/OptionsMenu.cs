@@ -19,6 +19,7 @@ public class OptionsMenu : MonoBehaviour
     static string music_PPrefsTag = "Music";
     static string sfx_PPrefsTag = "SFX";
     static string resolution_PPrefsTag = "Resolution";
+    static string camera_PPrefsTag = "Cameras";
     static string fullscreen_PPrefsTag = "FullScreen";
     static string quality_PPrefsTag = "Quality";
 
@@ -34,6 +35,9 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] TMP_Dropdown resolution;
     [SerializeField] TMP_Dropdown fullscreen;
     [SerializeField] TMP_Dropdown quality;
+    [SerializeField] TMP_Dropdown cameras;
+
+    public GameObject[] camerasGO;
 
     public bool menuIsOpen = false;
     public bool goMenu = false;
@@ -121,6 +125,43 @@ public class OptionsMenu : MonoBehaviour
         }
 
         {
+            
+            cameras.ClearOptions();
+            List<string> optionsCamera = new List<string>();
+            for (int i = 0; i < camerasGO.Length; i++)
+            {
+                if (i == 0)
+                {
+                    optionsCamera.Add("Camera Near");
+                }
+                else
+                if (i == 1)
+                {
+                    optionsCamera.Add("Camera Middle");
+                }
+                else
+                if (i == 2)
+                {
+                    optionsCamera.Add("Camera Far");
+                }
+                else { 
+                    optionsCamera.Add("Camara " + i+1);
+                }
+            }
+            cameras.AddOptions(optionsCamera);
+
+            int camerasLevel = PlayerPrefs.GetInt(camera_PPrefsTag, -1);
+            if(camerasLevel != -1)
+            {
+                cameras.value = camerasLevel;
+            }
+            else
+            {
+                cameras.value = 1;
+            }
+        }
+
+        {
             int fullscreenValue = PlayerPrefs.GetInt(fullscreen_PPrefsTag, -1);
             if (fullscreenValue != -1)
             {
@@ -157,9 +198,9 @@ public class OptionsMenu : MonoBehaviour
     //    originalOrbits[1].m_Radius = NormalizedToRange(newValue, 3f, 6.5f);
     //    originalOrbits[2].m_Radius = NormalizedToRange(newValue, 3f, 6.5f);
     //    freeLook.m_Orbits = originalOrbits;
-        
+
     //}
-   
+
     public void OnSliGammaValue(float newValue)
     {
         PlayerPrefs.SetFloat(gamma_PPrefsTag, newValue);
@@ -199,6 +240,7 @@ public class OptionsMenu : MonoBehaviour
         UnityEngine.Debug.Log(menuIsOpen);
         Invoke(nameof(OnButBackToGame), .5f);
     }
+
     public void OnButBackToGame()
     {
        
@@ -215,10 +257,12 @@ public class OptionsMenu : MonoBehaviour
 
         }
     }
+
     public void cdtime2()
     {
         Invoke(nameof(OnButGotoMainMenu), .5f);
     }
+
     public void OnButGotoMainMenu()
     {
         if (menuIsOpen && !afterMenu)
@@ -276,6 +320,37 @@ public class OptionsMenu : MonoBehaviour
     {
         PlayerPrefs.SetInt(fullscreen_PPrefsTag, option);
         ApplyResolution();
+    }
+
+    public void OnCameraChange(int option)
+    {
+        PlayerPrefs.SetInt(camera_PPrefsTag, option);
+        
+        if (option == 0)
+        {
+            camerasGO[0].SetActive(true);
+            camerasGO[1].SetActive(false);
+            camerasGO[2].SetActive(false);
+           
+
+
+        }else if(option == 1)
+        {
+            camerasGO[0].SetActive(false);
+            camerasGO[1].SetActive(true);
+            camerasGO[2].SetActive(false);
+        }
+        else if(option == 2)
+        {
+            camerasGO[0].SetActive(false);
+            camerasGO[1].SetActive(false);
+            camerasGO[2].SetActive(true);
+        }
+        else{
+            camerasGO[0].SetActive(false);
+            camerasGO[1].SetActive(true);
+            camerasGO[2].SetActive(false);
+        }
     }
 
     public void OnQualityChange(int option)
