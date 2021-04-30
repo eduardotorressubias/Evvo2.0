@@ -13,8 +13,6 @@ using Cinemachine;
 public class OptionsMenu : MonoBehaviour
 {
     static string brightness_PPrefsTag = "Brightness";
-    //static string zoom_PPrefsTag = "Zoom";
-
     static string gamma_PPrefsTag = "Gamma";
     static string music_PPrefsTag = "Music";
     static string sfx_PPrefsTag = "SFX";
@@ -26,10 +24,6 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] Canvas canvas;
     [SerializeField] AudioMixer myMixer;
     [SerializeField] Volume volume;
-
-    //camera
-    //public CinemachineFreeLook freeLook;
-    //private CinemachineFreeLook.Orbit[] originalOrbits;
 
 
     [SerializeField] TMP_Dropdown resolution;
@@ -125,6 +119,17 @@ public class OptionsMenu : MonoBehaviour
         }
 
         {
+            int fullscreenValue = PlayerPrefs.GetInt(fullscreen_PPrefsTag, -1);
+            if (fullscreenValue != -1)
+            {
+                fullscreen.value = fullscreenValue;
+            }
+            else
+            {
+                fullscreen.SetValueWithoutNotify(Screen.fullScreen == true ? 0 : 1);
+            }
+        }
+        {
             
             cameras.ClearOptions();
             List<string> optionsCamera = new List<string>();
@@ -161,17 +166,7 @@ public class OptionsMenu : MonoBehaviour
             }
         }
 
-        {
-            int fullscreenValue = PlayerPrefs.GetInt(fullscreen_PPrefsTag, -1);
-            if (fullscreenValue != -1)
-            {
-                fullscreen.value = fullscreenValue;
-            }
-            else
-            {
-                fullscreen.SetValueWithoutNotify(Screen.fullScreen == true ? 0 : 1);
-            }
-        }
+        
     }
 
     // Update is called once per frame
@@ -190,17 +185,7 @@ public class OptionsMenu : MonoBehaviour
         PlayerPrefs.SetFloat(brightness_PPrefsTag, newValue);
         colorAdjustments.postExposure.value = NormalizedToRange(newValue, -5f, 5f);
     }
-    //public void OnCameraZoom(float newValue)
-    //{
-    //    PlayerPrefs.SetFloat(zoom_PPrefsTag, newValue);
-
-    //    originalOrbits[0].m_Radius = NormalizedToRange(newValue, 3f, 6.5f);
-    //    originalOrbits[1].m_Radius = NormalizedToRange(newValue, 3f, 6.5f);
-    //    originalOrbits[2].m_Radius = NormalizedToRange(newValue, 3f, 6.5f);
-    //    freeLook.m_Orbits = originalOrbits;
-
-    //}
-
+    
     public void OnSliGammaValue(float newValue)
     {
         PlayerPrefs.SetFloat(gamma_PPrefsTag, newValue);
@@ -322,11 +307,11 @@ public class OptionsMenu : MonoBehaviour
         ApplyResolution();
     }
 
-    public void OnCameraChange(int option)
+    public void OnCameraChange(int option2)
     {
-        PlayerPrefs.SetInt(camera_PPrefsTag, option);
+        PlayerPrefs.SetInt(camera_PPrefsTag, option2);
         
-        if (option == 0)
+        if (option2 == 0)
         {
             camerasGO[0].SetActive(true);
             camerasGO[1].SetActive(false);
@@ -334,13 +319,13 @@ public class OptionsMenu : MonoBehaviour
            
 
 
-        }else if(option == 1)
+        }else if(option2 == 1)
         {
             camerasGO[0].SetActive(false);
             camerasGO[1].SetActive(true);
             camerasGO[2].SetActive(false);
         }
-        else if(option == 2)
+        else if(option2 == 2)
         {
             camerasGO[0].SetActive(false);
             camerasGO[1].SetActive(false);
