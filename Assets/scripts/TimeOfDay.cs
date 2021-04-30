@@ -14,7 +14,7 @@ public class TimeOfDay : MonoBehaviour
     public float transitionTime;
     public bool nightOn = false;
     private float numero = 0;
-    private float segundos = 0;
+    private float frames = 0;
 
    
 
@@ -24,19 +24,8 @@ public class TimeOfDay : MonoBehaviour
         counterTime += Time.deltaTime;
         numero += 0.02f;
 
-        segundos = segundos + 1;
-        //if (segundos == 50)
-        //{
-        //    Debug.Log("numero " + numero);
-        //    segundos = 0;
-        //}
-
-        //Debug.Log("numero "+numero);
-        //Debug.Log("countertime "+counterTime);
-        //if (numero/2 == 0)
-        //{
-        //    Debug.Log("numero " + numero);
-        //}
+        frames = frames + 1;
+      
         
         
        if(counterTime>= transitionTime)
@@ -55,28 +44,28 @@ public class TimeOfDay : MonoBehaviour
             }
             if (nightOn)
             {
-                if (segundos == 50)
+                if (frames == 50)
                 {
-                    night.weight = numero / transitionTime; /*(counterTime * -0.00001f);*/
-                    Debug.Log("numero " + numero);
-                    segundos = 0;
+                    night.weight = numero / transitionTime; 
+                    Debug.Log("numero wuau " + numero);
+                    frames = 0;
                 }
                 
             }
             else
             {
-                if (segundos == 50)
+               
+                if (frames == 50)
                 {
                     Debug.Log("numero " + numero);
-                    night.weight = numero / transitionTime;/*(counterTime * 0.00001f);*/
-                    segundos = 0;
+                    night.weight = numero / transitionTime;
+                    frames = 0;
                 }
                 
 
             }
 
-            //day.weight = day.weight+(counterTime * - 0.01f);
-            //night.weight = night.weight+(counterTime * 0.01f);
+            
         }
        
     }
