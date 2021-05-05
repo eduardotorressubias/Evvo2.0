@@ -76,7 +76,7 @@ public class OptionsMenu : MonoBehaviour
         {
             resolution.ClearOptions();
             List<string> options = new List<string>();
-            for (int i = 0; i < Screen.resolutions.Length; i++)
+            for (int i = 6; i < Screen.resolutions.Length; i++)
             {
                 //options.Add("" + Screen.resolutions[i].width + " x " + Screen.resolutions[i].height + " " + Screen.resolutions[i].refreshRate + "hz");
                 //options.Add("" + Screen.resolutions[i].width + " x " + Screen.resolutions[i].height + " " + Screen.resolutions[i].refreshRate + "hz");
@@ -88,7 +88,7 @@ public class OptionsMenu : MonoBehaviour
             int currentResolution = PlayerPrefs.GetInt(resolution_PPrefsTag, -1);
             if (currentResolution == -1)
             {
-                for (int i = 0; i < Screen.resolutions.Length; i++)
+                for (int i = 6; i < Screen.resolutions.Length; i++)
                 {
                     if ((Screen.resolutions[i].width == Screen.currentResolution.width) &&
                          (Screen.resolutions[i].height == Screen.currentResolution.height) &&
