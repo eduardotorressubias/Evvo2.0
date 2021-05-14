@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Options.unity
     guid: 08d827399783b8d42b944b2abdaa05af
   - enabled: 1
+    path: Assets/Scenes/AnimaticaScene.unity
+    guid: fe4a7ceb903e7f44684af2adc0a34d30
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: abe889489791b9347bd2341852db052f
   - enabled: 1
