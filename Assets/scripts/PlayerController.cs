@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     public bool tuto = false;
     public bool bounce = false;
+    public bool slope = true;
 
     public float playerSpeed = 10f;
     public float godSpeed = 0.25f;
@@ -362,19 +363,26 @@ public class PlayerController : MonoBehaviour
             movePlayer.y = fallVelocity;
             
         }
-        SlideDown();
+        
+            SlideDown();
+        
+        
     }
 
     public void SlideDown()
     {
         isOnSlope = Vector3.Angle(Vector3.up, hitNormal) >= player.slopeLimit;
 
-        if(isOnSlope)
+        if (slope)
         {
-            movePlayer.x += ((1f - hitNormal.y) * hitNormal.x) * slideVelocity;
-            movePlayer.z += ((1f - hitNormal.y) * hitNormal.z) * slideVelocity;
+            if (isOnSlope)
+            {
+                movePlayer.x += ((1f - hitNormal.y) * hitNormal.x) * slideVelocity;
+                movePlayer.z += ((1f - hitNormal.y) * hitNormal.z) * slideVelocity;
+                movePlayer.y += slopeForceDown;
 
-            movePlayer.y += slopeForceDown;
+
+            }
         }
     }
 
