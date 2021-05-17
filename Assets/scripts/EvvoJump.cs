@@ -20,7 +20,7 @@ public class EvvoJump : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "slidedown" || other.tag =="Scene")
+        if (other.tag == "slidedown" )
         {
            // Debug.Log("colapsa");
             player.slope = false;
@@ -28,7 +28,7 @@ public class EvvoJump : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "slidedown" || other.tag == "Scene")
+        if (other.tag == "slidedown" )
         {
            // Debug.Log("colapsa");
             player.slope = false;
@@ -38,7 +38,7 @@ public class EvvoJump : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "slidedown" || other.tag == "Scene")
+        if (other.tag == "slidedown" )
         {
            // Debug.Log("hola");
             player.slope = true;

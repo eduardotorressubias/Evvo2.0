@@ -36,7 +36,7 @@ public class TutorialMove : MonoBehaviour
         }
         else if (options.goMenu || player.tuto)
         {
-            Debug.Log("funsiona");
+           // Debug.Log("funsiona");
             tutorial1 = true;
             tutorial2 = true;
             tutorial3 = true;
@@ -48,7 +48,7 @@ public class TutorialMove : MonoBehaviour
 
         if ((player.horizontalMove != 0 && other.tag == "Player" && tutorial1 == true) || (player.verticalMove != 0 && other.tag == "Player" && tutorial1 == true))
         {
-            Debug.Log("1 "+tutorial1);
+           // Debug.Log("1 "+tutorial1);
             tutorial1 = false;
            
             skip2();
@@ -56,7 +56,7 @@ public class TutorialMove : MonoBehaviour
 
         if (Input.GetKey("space") && other.tag=="Player" && tutorial2==true && tutorial1 == false)
         {
-            Debug.Log("2 "+tutorial2);
+           // Debug.Log("2 "+tutorial2);
             tutorial2 = false;
             
             skip2();
@@ -64,7 +64,7 @@ public class TutorialMove : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Mouse0) && other.tag == "Player" && tutorial3==true && tutorial1 == false && tutorial2 == false)
         {
-            Debug.Log("3" +tutorial3);
+           // Debug.Log("3" +tutorial3);
             tutorial3 = false;
             animator.OpenDoor();
             skip2();
