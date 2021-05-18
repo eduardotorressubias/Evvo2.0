@@ -21,6 +21,11 @@ public class MenuManager : MonoBehaviour
 
     }
 
+    public void Animatica()
+    {
+        SceneManager.LoadScene("Animatica");
+    }
+
     public void Options()
     {
         SceneManager.LoadScene("Options");
