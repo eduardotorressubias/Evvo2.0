@@ -232,6 +232,10 @@ public class PlayerController : MonoBehaviour
             playerInput = new Vector3(horizontalMove, 0, verticalMove);
             playerInput = Vector3.ClampMagnitude(playerInput, 1);
         }
+        else
+        {
+            playerInput = Vector3.zero;
+        }
        
 
         if (movePlayer.x!=0 && jump==false && attacking == false && dead == false || movePlayer.z != 0 && jump == false && attacking == false && dead == false)
@@ -260,7 +264,18 @@ public class PlayerController : MonoBehaviour
 
         player.transform.LookAt(player.transform.position + movePlayer);
 
-        camPosition = new Vector3(camPlayer.transform.position.x, camPlayer.transform.position.y, camPlayer.transform.position.z);
+      
+
+        for (int i = 0; i < camPlayer.transform.childCount; i++)
+        {
+            if (camPlayer.transform.GetChild(i).gameObject.activeSelf)
+            {
+                camPosition = new Vector3(camPlayer.transform.GetChild(i).position.x, camPlayer.transform.GetChild(i).position.y, camPlayer.transform.GetChild(i).position.z);
+                break;
+            }
+        }
+
+        
     }
 
     //Fucion para Jump
@@ -441,9 +456,9 @@ public class PlayerController : MonoBehaviour
         //Si el jugador cae al vacio y entra en el trigger CamaraCaida se desactivara la camara actual de tercera persona y se activara una que simplemente mire al jugador pero no lo siga
         if (other.tag == "CamaraCaida" && god == false)
         {
-            camPlayer.SetActive(true);
+            camPlayer.SetActive(false);
 
-            camCaida.SetActive(false);
+            camCaida.SetActive(true);
         }
 
         //Activar tutorial 1
