@@ -47,12 +47,14 @@ public class TimeOfDay : MonoBehaviour
         }
         else
         {
-            if (night.weight >= 0.9)
+            if (night.weight >= 0.99f)
             {
+                night.weight = 1f;
                 nightOn = true;
             }
-            else if (night.weight <= 0.1)
+            else if (night.weight <= 0.01)
             {
+                night.weight = 0f;
                 nightOn = false;
             }
             if (nightOn)

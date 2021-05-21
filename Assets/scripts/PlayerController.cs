@@ -219,7 +219,8 @@ public class PlayerController : MonoBehaviour
     //    }
 
     //}
-  
+    
+ 
 
     //Movimiento wasd
     public void movement()
