@@ -17,8 +17,6 @@ public class TimeOfDay : MonoBehaviour
     private float numeroResta = 0;
     private float frames = 0;
 
-
-
     private void Start()
     {
         numeroResta = transitionTime;
@@ -59,11 +57,9 @@ public class TimeOfDay : MonoBehaviour
             }
             if (nightOn)
             {
-                Debug.Log("frames: " + frames);
                 if (frames == 49)
                 {
                     night.weight = numeroResta / transitionTime;
-                    Debug.Log("numero resta " + numeroResta);
                     frames = 0;
                 }
                 
@@ -72,16 +68,10 @@ public class TimeOfDay : MonoBehaviour
             {
                 if (frames == 49)
                 {
-                    Debug.Log("numero " + numero);
                     night.weight = numero / transitionTime;
                     frames = 0;
                 }
-                
-
             }
-
-            
         }
-       
     }
 }

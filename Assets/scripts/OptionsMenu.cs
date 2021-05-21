@@ -32,6 +32,7 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] TMP_Dropdown cameras;
 
     public GameObject[] camerasGO;
+    public static GameObject current_camera;
 
     public bool menuIsOpen = false;
     public bool goMenu = false;
@@ -320,22 +321,24 @@ public class OptionsMenu : MonoBehaviour
             camerasGO[0].SetActive(true);
             camerasGO[1].SetActive(false);
             camerasGO[2].SetActive(false);
-           
-
-
-        }else if(option2 == 1)
+            current_camera = camerasGO[0].gameObject;
+        }
+        else if(option2 == 1)
         {
             camerasGO[0].SetActive(false);
             camerasGO[1].SetActive(true);
             camerasGO[2].SetActive(false);
+            current_camera = camerasGO[1].gameObject;
         }
         else if(option2 == 2)
         {
             camerasGO[0].SetActive(false);
             camerasGO[1].SetActive(false);
             camerasGO[2].SetActive(true);
+            current_camera = camerasGO[2].gameObject;
         }
-        else{
+        else
+        {
             camerasGO[0].SetActive(false);
             camerasGO[1].SetActive(true);
             camerasGO[2].SetActive(false);
