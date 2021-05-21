@@ -204,22 +204,10 @@ public class PlayerController : MonoBehaviour
 
     //Copiar el transform de la plataforma y moverse igual
 
-    //public void plataform()
-    //{
-    //    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask))
-    //    {
-            
-    //        UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
-    //        UnityEngine.Debug.Log("Hit");
-    //    }
-    //    else
-    //    {
-    //        UnityEngine.Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000f, Color.red);
-    //        UnityEngine.Debug.Log("Not Hit");
-    //    }
-
-    //}
-    
+     private bool IsGrounded()
+    {
+        return transform.Find("GroundCheck").GetComponent<GroundCheck>().isGrounded;
+    }
  
 
     //Movimiento wasd
@@ -284,7 +272,7 @@ public class PlayerController : MonoBehaviour
     {
        
         //UnityEngine.Debug.Log("gounded? "+player.isGrounded);
-        if (player.isGrounded && Input.GetButtonDown("Jump") && dead==false )
+        if (player.isGrounded && Input.GetButtonDown("Jump") && dead==false || IsGrounded() && Input.GetButtonDown("Jump") && dead == false)
         {
             
             Instantiate(sonidoSalto);
@@ -294,12 +282,12 @@ public class PlayerController : MonoBehaviour
             walk = false;
             alreadyjump = true;
 
-        }else if (player.isGrounded)
+        }else if (IsGrounded() || player.isGrounded)
         {
             alreadyjump = false;
             jump = false;
         }
-        else if (!player.isGrounded)
+        else if (!IsGrounded() || !player.isGrounded)
         {
             
             if(alreadyjump == true)
@@ -368,7 +356,7 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        if (player.isGrounded)
+        if (IsGrounded() ||  player.isGrounded)
         {
             fallVelocity = -gravity * Time.deltaTime;
             movePlayer.y = fallVelocity;
