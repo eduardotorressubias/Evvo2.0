@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
     public float yProject;
     public GameObject atack;
 
+    public GameObject cannon_pos;
+
     //Animations
     private bool distance;
     private bool mele;
@@ -80,9 +82,6 @@ public class EnemyController : MonoBehaviour
         playerInMeleAtack = Physics.CheckSphere(transform.position, meleAttack, whatIsPlayer);
         if (!die)
         {
-
-
-
             if (!playerInSightRange && !playerInAttackRange && !playerInMeleAtack)
             {
                 walk = true;
@@ -137,8 +136,6 @@ public class EnemyController : MonoBehaviour
             if (agent.velocity.normalized != Vector3.zero) {
                 transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
             }
-            
-
 
             Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -162,16 +159,13 @@ public class EnemyController : MonoBehaviour
             walkPointSet = true;
         }
     }
-
     private void ChasePlayer()
     {
         agent.SetDestination(player.transform.position);
 
     }
-
     private void AttackPlayer()
     {
-        
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         playerLook = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
@@ -199,7 +193,6 @@ public class EnemyController : MonoBehaviour
     }
     private void MeleAttack()
     {
-
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         playerLook = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
@@ -234,7 +227,6 @@ public class EnemyController : MonoBehaviour
     {
         alreadyAttacked = false;
     }
-
     public void TakeDamage(int damage)
     {
         idle = false;
@@ -424,11 +416,14 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         if (!die)
         {
-            PosProjectile = new Vector3(transform.position.x-0.2f, transform.position.y + yProject, transform.position.z+0.68f);
-            Rigidbody rb = Instantiate(projectile, PosProjectile + (transform.forward * 1.2f), Quaternion.identity).GetComponent<Rigidbody>();
+            //PosProjectile = new Vector3(transform.position.x-0.2f, transform.position.y + yProject, transform.position.z+0.68f);
+            cannon_pos.transform.LookAt(player.transform.position);
+            PosProjectile = cannon_pos.transform.position;
 
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 6f, ForceMode.Impulse);
+            Rigidbody rb = Instantiate(projectile, PosProjectile + (transform.forward), Quaternion.identity).GetComponent<Rigidbody>();
+
+            rb.AddForce(cannon_pos.transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(cannon_pos.transform.up * 10f, ForceMode.Impulse);
         }
         else
         {
@@ -454,6 +449,4 @@ public class EnemyController : MonoBehaviour
         dmg1 = false;
         dmg2 = false;
     }
-
-
 }
