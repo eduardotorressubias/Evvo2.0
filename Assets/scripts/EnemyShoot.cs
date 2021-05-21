@@ -30,13 +30,9 @@ public class EnemyShoot : MonoBehaviour
 
     void Update()
     {
-
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-
-        Vector3 lookatposition = transform.position + rb.velocity;
-
-        transform.LookAt(lookatposition);
-
+        //transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        //Vector3 lookatposition = transform.position + rb.velocity;
+        //transform.LookAt(lookatposition);
 
         if (transform.position.x == target.x && transform.position.y == target.y)
         {
