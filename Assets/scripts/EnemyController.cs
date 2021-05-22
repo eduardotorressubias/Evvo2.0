@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
     public float walkPointRange;
     public bool dead = false;
 
+
     //Attacking
     public float timeBetweenAttacksMele;
     public float timeBetweenAttacksDistance;
@@ -52,6 +53,10 @@ public class EnemyController : MonoBehaviour
 
     //States
     public float sightRange , attackRange, meleAttack ;
+    public float TamañoCubo;
+    private Vector3 box;
+    public Transform evvo;
+
     public bool playerInSightRange, playerInAttackRange, Soundon, playerInMeleAtack;
     Vector3 playerLook;
     private float timeCounter=0;
@@ -77,7 +82,9 @@ public class EnemyController : MonoBehaviour
     {
         //Debug.Log("enemy " + transform.position.y + ", player " + player.transform.position.y);
         //check vision y rango de ataque
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        box = new Vector3(TamañoCubo, 3f, TamañoCubo);
+        Vector3 positionEvvo = evvo.position - transform.position;
+        playerInSightRange = Physics.CheckBox(transform.position, box, Quaternion.LookRotation(positionEvvo), whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInMeleAtack = Physics.CheckSphere(transform.position, meleAttack, whatIsPlayer);
         if (!die)
@@ -377,7 +384,7 @@ public class EnemyController : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawCube(transform.position, box);
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.color = Color.red;
