@@ -15,14 +15,14 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   quality:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 3
   focusMode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   focusDistance:
-    m_OverrideState: 0
-    m_Value: 10
+    m_OverrideState: 1
+    m_Value: 0.1
     min: 0.1
   nearFocusStart:
     m_OverrideState: 0
@@ -116,20 +116,20 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   top:
-    m_OverrideState: 0
-    m_Value: {r: 0, g: 0, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.63, g: 0.72866654, b: 1, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
   middle:
-    m_OverrideState: 0
-    m_Value: {r: 0.3, g: 0.7, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.82, b: 0.9850001, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
   bottom:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.846, b: 0.72, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
@@ -151,6 +151,7 @@ MonoBehaviour:
   components:
   - {fileID: 82767286876957281}
   - {fileID: -1162837901547429381}
+  - {fileID: -8863547204500260422}
 --- !u!114 &82767286876957281
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   skyType:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 3
   skyAmbientMode:
     m_OverrideState: 1
     m_Value: 0
