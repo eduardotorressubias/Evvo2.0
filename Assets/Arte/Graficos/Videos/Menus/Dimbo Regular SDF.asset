@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Dimbo Regular Atlas Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: UNDERLAY_ON
+  m_ShaderKeywords: GLOW_ON UNDERLAY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -53,9 +53,9 @@ Material:
     - _FaceDilate: 0
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 0.119
-    - _GlowOffset: -0.08
-    - _GlowOuter: 0.075
+    - _GlowInner: 0.186
+    - _GlowOffset: -0
+    - _GlowOuter: 0.085
     - _GlowPower: 0.133
     - _GradientScale: 10
     - _LightAngle: 3.78
@@ -100,7 +100,7 @@ Material:
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0.070354216, g: 0.2298327, b: 0.4811321, a: 1}
     - _SpecularColor: {r: 0.4292453, g: 0.8546325, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.058823533, g: 0.15686275, b: 0.25490198, a: 1}
+    - _UnderlayColor: {r: 0.056692775, g: 0.1509879, b: 0.24528301, a: 1}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
