@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnResolutionChange
         m_Mode: 0
         m_Arguments:
@@ -2140,7 +2140,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnButGotoMainMenu
         m_Mode: 1
         m_Arguments:
@@ -2164,7 +2164,7 @@ RectTransform:
   m_Children:
   - {fileID: 565977970778602838}
   m_Father: {fileID: 565977971562481752}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3808,7 +3808,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnCameraChange
         m_Mode: 0
         m_Arguments:
@@ -5304,7 +5304,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnSliSFXValue
         m_Mode: 0
         m_Arguments:
@@ -6417,7 +6417,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnFullscreenChange
         m_Mode: 0
         m_Arguments:
@@ -7017,6 +7017,8 @@ GameObject:
   - component: {fileID: 565977971305772146}
   - component: {fileID: 565977971305772147}
   - component: {fileID: 565977971305772156}
+  - component: {fileID: 565977971305772159}
+  - component: {fileID: 565977971305772160}
   m_Layer: 5
   m_Name: CanvasOptions
   m_TagString: Untagged
@@ -7024,6 +7026,50 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &565977971305772159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565977971305772158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09eba8d577adcbf41ae443b489fb0e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 565977971305772146}
+  myMixer: {fileID: 24100000, guid: 93038707a0835dd44a88cf067b9224c5, type: 2}
+  volume: {fileID: 7032820227719914017, guid: fb816e1971d95db4f9b90f7a44ab37e1, type: 3}
+  resolution: {fileID: 565977969998282658}
+  fullscreen: {fileID: 565977971113668256}
+  quality: {fileID: 565977971846268307}
+  cameras: {fileID: 565977970467226724}
+  camerasGO:
+  - {fileID: 2683119256278796873, guid: 9377be7da8b774341a64e17196b20bde, type: 3}
+  - {fileID: 4123876767800224653, guid: 6e82ccde9a97ba046be5d18d03f3b129, type: 3}
+  - {fileID: 794822722727609755, guid: 149a5176bcb2f314794ff7aff4c19e9a, type: 3}
+  menuIsOpen: 1
+  goMenu: 0
+  afterMenu: 1
+  sliMusic: {fileID: 565977971508142265}
+  sliSFX: {fileID: 565977970744174779}
+  sliBrightness: {fileID: 565977971349232826}
+  sliGamme: {fileID: 565977971750365317}
+  canvasHUD: {fileID: 0}
+  canvasTutorial: {fileID: 0}
+--- !u!114 &565977971305772160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565977971305772158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b19f2e4587f28745a95af4446b55402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &565977971315399608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7345,7 +7391,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnSliBrightnessValue
         m_Mode: 0
         m_Arguments:
@@ -7532,8 +7578,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnButBackToGame
+      - m_Target: {fileID: 565977971305772158}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7556,7 +7602,7 @@ RectTransform:
   m_Children:
   - {fileID: 565977970691853770}
   m_Father: {fileID: 565977971562481752}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7581,7 +7627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &565977971396710571
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8302,7 +8348,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnSliMusicValue
         m_Mode: 0
         m_Arguments:
@@ -8489,8 +8535,8 @@ RectTransform:
   - {fileID: 565977971349232827}
   - {fileID: 565977971508142266}
   - {fileID: 565977970744174756}
-  - {fileID: 565977971381086723}
   - {fileID: 565977970055567995}
+  - {fileID: 565977971381086723}
   - {fileID: 565977971890519813}
   - {fileID: 565977970906707586}
   - {fileID: 565977970019690501}
@@ -9288,7 +9334,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnSliGammaValue
         m_Mode: 0
         m_Arguments:
@@ -9580,7 +9626,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 565977971305772159}
         m_MethodName: OnQualityChange
         m_Mode: 0
         m_Arguments:
