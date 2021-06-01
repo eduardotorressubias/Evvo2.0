@@ -37,6 +37,7 @@ public class OptionsMenu : MonoBehaviour
     public bool menuIsOpen = false;
     public bool goMenu = false;
     public bool afterMenu = false;
+    
     private MenuManager menuManager;
 
     [SerializeField] Slider sliMusic;
@@ -46,6 +47,7 @@ public class OptionsMenu : MonoBehaviour
     //[SerializeField] Slider sliZoom;
 
     public GameObject canvasHUD;
+    public GameObject canvasPausa;
     public GameObject canvasTutorial;
 
     ColorAdjustments colorAdjustments;
@@ -239,6 +241,8 @@ public class OptionsMenu : MonoBehaviour
             UnityEngine.Cursor.visible = false;
             UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             canvas.gameObject.SetActive(false);
+            canvasPausa.gameObject.SetActive(false);
+
             Time.timeScale = oldTimeScale;
             menuIsOpen = false;
             PlayerPrefs.Save();
@@ -246,6 +250,13 @@ public class OptionsMenu : MonoBehaviour
             canvasTutorial.SetActive(true);
 
         }
+    }
+
+    public void OnGoOptions()
+    {
+        canvas.gameObject.SetActive(false);
+        canvasPausa.gameObject.SetActive(true);
+
     }
 
     public void cdtime2()
