@@ -12,6 +12,7 @@ public class DetectColectable : MonoBehaviour
     public GameObject errorPortal;
     private bool error= false;
     private float counterTime;
+    public GameObject pieza1, pieza2;
     
     void Start()
     {
@@ -65,6 +66,8 @@ public class DetectColectable : MonoBehaviour
         if(ScoreManager.FindObjectOfType<ScoreManager>().score == 2)
         {
             portal.SetActive(true);
+            pieza1.SetActive(true);
+            pieza2.SetActive(true);
         }
         else
         {
