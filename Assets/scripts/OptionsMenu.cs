@@ -61,9 +61,6 @@ public class OptionsMenu : MonoBehaviour
 
     void Start()
     {
-        freeLookNear = GetComponent<CinemachineFreeLook>();
-        freeLookMiddle = GetComponent<CinemachineFreeLook>();
-        freeLookTop = GetComponent<CinemachineFreeLook>();
 
         volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
         volume.profile.TryGet<LiftGammaGain>(out liftGammaGain);
@@ -139,6 +136,7 @@ public class OptionsMenu : MonoBehaviour
                 fullscreen.SetValueWithoutNotify(Screen.fullScreen == true ? 0 : 1);
             }
         }
+
         {
             
             cameras.ClearOptions();
@@ -375,16 +373,38 @@ public class OptionsMenu : MonoBehaviour
         );
     }
 
-    void ChangeAxisX()
+    public void ChangeAxisX(bool invert)
     {
-        freeLookNear.m_XAxis.m_InvertInput = true;
-        freeLookMiddle.m_XAxis.m_InvertInput = true;
-        freeLookTop.m_XAxis.m_InvertInput = true;
+        if (invert == false)
+        {
+            
+            freeLookNear.m_XAxis.m_InvertInput = false;
+            freeLookMiddle.m_XAxis.m_InvertInput = false;
+            freeLookTop.m_XAxis.m_InvertInput = false;
+
+        }
+        else
+        {
+            freeLookNear.m_XAxis.m_InvertInput = true;
+            freeLookMiddle.m_XAxis.m_InvertInput = true;
+            freeLookTop.m_XAxis.m_InvertInput = true;
+
+        }
     }
-    void ChangeAxisY()
+    public void ChangeAxisY(bool invert)
     {
-        freeLookNear.m_YAxis.m_InvertInput = false;
-        freeLookMiddle.m_YAxis.m_InvertInput = false;
-        freeLookTop.m_YAxis.m_InvertInput = false;
+        if (invert == false)
+        {
+            freeLookNear.m_YAxis.m_InvertInput = false;
+            freeLookMiddle.m_YAxis.m_InvertInput = false;
+            freeLookTop.m_YAxis.m_InvertInput = false;
+        }
+        else
+        {
+            freeLookNear.m_YAxis.m_InvertInput = true;
+            freeLookMiddle.m_YAxis.m_InvertInput = true;
+            freeLookTop.m_YAxis.m_InvertInput = true;
+        }
+        
     }
 }
