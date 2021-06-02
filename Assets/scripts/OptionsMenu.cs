@@ -53,14 +53,17 @@ public class OptionsMenu : MonoBehaviour
     ColorAdjustments colorAdjustments;
     LiftGammaGain liftGammaGain;
 
-    // Start is called before the first frame update
-    //private void Awake()
-    //{
-    //    freeLook = GetComponent<CinemachineFreeLook>();
-    //    originalOrbits = new CinemachineFreeLook.Orbit[freeLook.m_Orbits.Length];
-    //}
+    public CinemachineFreeLook freeLookNear;
+    public CinemachineFreeLook freeLookMiddle;
+    public CinemachineFreeLook freeLookTop;
+
+
+
     void Start()
     {
+        freeLookNear = GetComponent<CinemachineFreeLook>();
+        freeLookMiddle = GetComponent<CinemachineFreeLook>();
+        freeLookTop = GetComponent<CinemachineFreeLook>();
 
         volume.profile.TryGet<ColorAdjustments>(out colorAdjustments);
         volume.profile.TryGet<LiftGammaGain>(out liftGammaGain);
@@ -370,5 +373,18 @@ public class OptionsMenu : MonoBehaviour
             fullscreen.value == 0,
             Screen.resolutions[resolution.value].refreshRate
         );
+    }
+
+    void ChangeAxisX()
+    {
+        freeLookNear.m_XAxis.m_InvertInput = true;
+        freeLookMiddle.m_XAxis.m_InvertInput = true;
+        freeLookTop.m_XAxis.m_InvertInput = true;
+    }
+    void ChangeAxisY()
+    {
+        freeLookNear.m_YAxis.m_InvertInput = false;
+        freeLookMiddle.m_YAxis.m_InvertInput = false;
+        freeLookTop.m_YAxis.m_InvertInput = false;
     }
 }
