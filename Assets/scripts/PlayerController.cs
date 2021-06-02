@@ -163,6 +163,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //cursor visible y que no se salga de la pantalla 
+
     public void visibleCursor()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -470,7 +471,11 @@ public class PlayerController : MonoBehaviour
             //Time.timeScale = 0f;
         }
 
-
+        //piezapuerta
+        if (other.tag == "PiezaPuerta")
+        {
+            Destroy(other.gameObject);
+        }
 
     }
 

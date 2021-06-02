@@ -23,6 +23,7 @@ TagManager:
   - EnemyAtack
   - Altura
   - slidedown
+  - PiezaPuerta
   layers:
   - Default
   - TransparentFX
