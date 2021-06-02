@@ -81,7 +81,7 @@ public class MenuManager : MonoBehaviour
         //yield return new WaitForSeconds(1f);
         levelChanger.OnFadeComplete();
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("WinScene");
+        SceneManager.LoadScene("Credits");
     }
     private IEnumerator WaitLose()
     {

@@ -91,6 +91,7 @@ public class EnemyController : MonoBehaviour
         {
             if (!playerInSightRange && !playerInAttackRange && !playerInMeleAtack)
             {
+                idle = false;
                 walk = true;
                 Patroling();
                 Soundon = false;
