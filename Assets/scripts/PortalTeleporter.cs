@@ -25,7 +25,7 @@ public class PortalTeleporter : MonoBehaviour
             //Si es true : el player traspaso el portal
             if(dotProduct < 0f)
             {
-                Debug.Log("entra2");
+               
                 //Teleportar
                 float rotationDiff = -Quaternion.Angle(transform.rotation, reciver.rotation);
                 if(rotationDiff >= 360)
