@@ -24,6 +24,7 @@ TagManager:
   - Altura
   - slidedown
   - PiezaPuerta
+  - Palanca
   layers:
   - Default
   - TransparentFX
