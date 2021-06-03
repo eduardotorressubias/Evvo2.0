@@ -451,12 +451,15 @@ public class enemy2 : MonoBehaviour
         idle = false;
         attack = true;
         yield return new WaitForSeconds(0.5f);
+        if(!die)
+        {
+            atack.SetActive(true);
+        }
         //PosProjectile = new Vector3(transform.position.x, transform.position.y + yProject, transform.position.z);
         //Rigidbody rb = Instantiate(projectile, PosProjectile + (transform.forward * 1.2f), Quaternion.identity).GetComponent<Rigidbody>();
 
         //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-        //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-        atack.SetActive(true);
+        //rb.AddForce(transform.up * 8f, ForceMode.Impulse);     
 
 
     }
