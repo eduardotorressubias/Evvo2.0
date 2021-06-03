@@ -116,10 +116,10 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 0
-    y: -154
-    width: 4195
-    height: 2295
+    x: 769
+    y: -211
+    width: 3451
+    height: 2119
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3587,18 +3587,7 @@ VisualEffectResource:
     - nameId: spawner_output
       index: 1
     values: []
-    tasks:
-    - type: 268435457
-      buffers: []
-      temporaryBuffers: []
-      values:
-      - nameId: Count
-        index: 24
-      - nameId: Delay
-        index: 27
-      params: []
-      processor: {fileID: 0}
-      shaderSourceIndex: -1
+    tasks: []
   - type: 0
     flags: 0
     capacity: 0
@@ -10156,7 +10145,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614761}
   - {fileID: 8926484042661614762}
   m_OutputSlots: []
-  m_Disabled: 0
+  m_Disabled: 1
   repeat: 0
   spawnMode: 0
   delayMode: 0
