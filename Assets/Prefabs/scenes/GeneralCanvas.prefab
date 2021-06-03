@@ -2017,7 +2017,11 @@ MonoBehaviour:
   sliBrightness: {fileID: 8639239714081286862}
   sliGamme: {fileID: 8639239713139792895}
   canvasHUD: {fileID: 7626907753133699881}
+  canvasPausa: {fileID: 0}
   canvasTutorial: {fileID: 7626907753888126525}
+  freeLookNear: {fileID: 0}
+  freeLookMiddle: {fileID: 0}
+  freeLookTop: {fileID: 0}
 --- !u!1 &7626907752270169763
 GameObject:
   m_ObjectHideFlags: 0
