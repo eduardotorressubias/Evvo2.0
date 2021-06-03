@@ -13,9 +13,14 @@ public class DetectColectable : MonoBehaviour
     private bool error= false;
     private float counterTime;
     public GameObject pieza1, pieza2;
+    public bool palanca;
+    public bool palanca2;
+    private PlayerAnimation puertaAnim;
+    public Animator arbolAnim;
     
     void Start()
     {
+        puertaAnim = FindObjectOfType<PlayerAnimation>();
         
     }
 
@@ -45,13 +50,17 @@ public class DetectColectable : MonoBehaviour
             if (Input.GetKey("f"))
             {
                 sprite.SetActive(false);
-                PortalEnable();
-                
+                if (!palanca)
+                {
+                    PortalEnable();
+                }
+                else
+                {
+                    AbrePuerta();
+                }
 
                 pressF = true;
             }
-
-
         }
         else
         {
@@ -75,6 +84,29 @@ public class DetectColectable : MonoBehaviour
             error = true;
         }
     }
+
+    void AbrePuerta()
+    {
+        if (PalancaManager.FindObjectOfType<PalancaManager>().score == 1)
+        {
+            if (palanca2)
+            {
+                arbolAnim.SetTrigger("abrir");
+            }
+            else
+            {
+                puertaAnim.OpenDoor();
+            }
+            
+        }
+        else
+        {
+            errorPortal.SetActive(true);
+            error = true;
+        }
+
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
