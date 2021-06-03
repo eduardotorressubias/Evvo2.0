@@ -48,10 +48,12 @@ public class enemy2 : MonoBehaviour
     private Vector3 PosProjectile;
     public float yProject = 0.6f;
     public GameObject atack;
-    private bool coldown = false;
+    public bool coldown = false;
     private float timeCounterCd = 0;
     private float cdTime = 0.5f;
     private float atak;
+    //vfx
+    public GameObject vfx_dmg;
 
 
     [Header("Patrol")]
@@ -319,6 +321,7 @@ public class enemy2 : MonoBehaviour
         }
         else
         {
+            
             dmg = true;
         }
         
@@ -353,6 +356,8 @@ public class enemy2 : MonoBehaviour
             if (other.tag == "Attack")
             {
                 Debug.Log("Me ha dado");
+                vfx_dmg.SetActive(false);
+                vfx_dmg.SetActive(true);
                 TakeDamage(1);
                 coldown = true;
             }
