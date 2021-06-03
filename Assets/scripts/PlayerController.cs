@@ -488,6 +488,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        //palanca
+        if (other.tag == "Palanca")
+        {
+            Destroy(other.gameObject);
+        }
 
     }
 
