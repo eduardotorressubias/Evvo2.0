@@ -166,11 +166,13 @@ public class OptionsMenu : MonoBehaviour
             int camerasLevel = PlayerPrefs.GetInt(camera_PPrefsTag, -1);
             if(camerasLevel != -1)
             {
+                //UnityEngine.Debug.Log("hola2");
                 cameras.value = camerasLevel;
             }
             else
             {
-                cameras.value = 1;
+               // UnityEngine.Debug.Log("hola");
+                cameras.SetValueWithoutNotify(1);
             }
         }
 
