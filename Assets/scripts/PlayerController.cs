@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     private bool attacking = false;
     public GameObject sonidoSalto;
     public GameObject sonidoAttack;
+    public GameObject vfx_dmg;
 
 
     //godmode
@@ -176,6 +177,7 @@ public class PlayerController : MonoBehaviour
     //Ataque y coldown de ataque
     public void atack()
     {
+        
         if (Input.GetKeyDown(KeyCode.Mouse0) && optionsMenu.menuIsOpen == false && attacking == false && dead == false)
         {
             Instantiate(sonidoAttack);
@@ -190,13 +192,23 @@ public class PlayerController : MonoBehaviour
                 timeCounterCd = 0;
                 attacking = false;
                 attackbox.SetActive(false);
+                //vfx_dmg.SetActive(false);
             }
             else
             {
                 attackbox.SetActive(false);
-                if (timeCounterCd >= 0.5f)
+                //vfx_dmg.SetActive(false);
+                if (timeCounterCd >= 0.1f)
                 {
+                    //vfx_dmg.SetActive(false);
+                    //vfx_dmg.SetActive(true);
+                }
+
+                    if (timeCounterCd >= 0.5f)
+                {
+
                     attackbox.SetActive(true);
+                    
                 }
                 
             }

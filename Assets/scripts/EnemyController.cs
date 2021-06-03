@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 PosProjectile;
     public float yProject;
     public GameObject atack;
-
+    public GameObject vfx_daño;
     public GameObject cannon_pos;
 
     //Animations
@@ -306,6 +306,9 @@ public class EnemyController : MonoBehaviour
             if (other.tag == "Attack")
             {
                 Debug.Log("Me ha dado");
+                vfx_daño.SetActive(false);
+                vfx_daño.SetActive(true);
+
                 TakeDamage(1);
                 coldown = true;
             }
