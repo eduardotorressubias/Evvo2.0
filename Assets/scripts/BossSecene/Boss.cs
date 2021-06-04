@@ -7,16 +7,22 @@ public class Boss : MonoBehaviour
 
     public float health;
     // rango ataque
-    public bool playerInMeleRange, playerInDistanceRange, playerInSightRange;
-    public float meleRange, distanceRange, sightRange;
+    public bool  playerInDistanceRange;
+    public float /*meleRange,*/ distanceRange/*, sightRange*/;
     public LayerMask whatIsPlayer;
 
     // atacks
     public bool alreadyAttack;
     public float TimeBetweenAttacks;
-    public GameObject Vfx_damage;
+    public GameObject vfx_damage;
+    private float timeCounter = 0, tiempo = 0, animacion = 5f, cdTime = 0.7f;
+    private bool coldown = false;
+
+
     // box de ataque puños
-    public GameObject atack;
+    public GameObject atack, atack2, vfx_atack;
+    private Animator animator;
+
 
     //Animations
     private bool idle, atack_normal1, atack_normal2, atack_doble, atack_area, dead; 
@@ -32,26 +38,36 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInDistanceRange = Physics.CheckSphere(transform.position, distanceRange, whatIsPlayer);
-        playerInMeleRange = Physics.CheckSphere(transform.position, meleRange, whatIsPlayer);
+     
 
         if (!dead)
         {
-            if(!playerInDistanceRange && !playerInMeleRange)
+            if(!playerInDistanceRange )
             {
+                atack_doble = false;
                 idle = true;
+                
             }
-            if(playerInDistanceRange && !playerInMeleRange)
+            if(playerInDistanceRange )
             {
                 DistanceAtack();
             }
-            if(playerInDistanceRange && playerInMeleRange)
+            
+        }
+        animations();
+
+        if (health <= 0)
+        {
+            tiempo += Time.deltaTime;
+            if (tiempo >= animacion)
             {
-                MeleAtack();
+                atack_doble = false;
+                dead = true;
+                transform.rotation = Quaternion.LookRotation(Vector3.zero);
+                DestroyEnemy();
             }
         }
-
 
     }
 
@@ -74,10 +90,13 @@ public class Boss : MonoBehaviour
     }
     private IEnumerator AttackDistanceOn()
     {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(4.12f);
         if (!dead)
         {
             atack.SetActive(true);
+            atack2.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            vfx_atack.SetActive(true);
         }
         else
         {
@@ -87,14 +106,40 @@ public class Boss : MonoBehaviour
 
     private IEnumerator AttackFalseDistance()
     {
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(4.06f);
         atack.SetActive(false);
+        atack2.SetActive(false);
+        vfx_atack.SetActive(false);
         atack_doble = false;
         idle = true;
     }
 
-    private void MeleAtack()
+    public void playerColdown()
     {
+        if (coldown == true)
+        {
+            timeCounter += Time.deltaTime;
+            if (timeCounter >= cdTime)
+            {
+                timeCounter = 0;
+                coldown = false;
+            }
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (coldown == false)
+        {
+            if (other.tag == "Attack")
+            {
+                Debug.Log("Me ha dado");
+                vfx_damage.SetActive(false);
+                vfx_damage.SetActive(true);
+                TakeDamage(1);
+                coldown = true;
+            }
+        }
 
     }
 
@@ -103,12 +148,63 @@ public class Boss : MonoBehaviour
         alreadyAttack = false;
     }
 
+    void animations()
+    {
+        if (idle)
+        {
+            animator.SetBool("idle", true);
+        }
+        else
+        {
+            animator.SetBool("idle", false);
+        }
+        if (atack_doble)
+        {
+            animator.SetBool("attack_doble", true);
+        }
+        else
+        {
+            animator.SetBool("attack_doble", false);
+        }
+        if (dead)
+        {
+            animator.SetBool("dead", true);
+        }
+        else
+        {
+            animator.SetBool("dead", false);
+        }
+        
+
+    }
+
+    public void TakeDamage(int damage)
+    {
+        idle = false;
+        dead = false;
+        health -= damage;
+        if (health <= 0)
+        {
+            dead = true;
+            Destroy(gameObject, 5f);
+        }
+        
+    }
+
+    private void DestroyEnemy()
+    {
+
+        Debug.Log(dead);
+        Destroy(gameObject);
+
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, distanceRange);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, meleRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, meleRange);
 
     }
 }
