@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 1210981149}
   - component: {fileID: 1210981151}
   - component: {fileID: 1210981150}
+  - component: {fileID: 1210981152}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -388,6 +389,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210981148}
   m_CullTransparentMesh: 0
+--- !u!82 &1210981152
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210981148}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a298c817cfc0f7d4c86b3bffbfaf83c6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1823313639
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,14 +542,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "EVV\xD6\n\nPresented by Infinitum \n\n[Carlos Piriz]\n\n3D Artist \nAudio
-    \nGame Designer  \nTexture Artist \nUI Artist \nVFX Artist\n\n[Daniel Collado]\n\n3D
-    Artist \nAssistant Programmer \nLevel Designer \nLighting \nTexture Artist \nUI
-    Artist \nVFX Artist \n\n[Di Wu]\n\n3D Artist \nAssitant Concept Artist \nTexture
-    Artist \nVFX Artist \nUI Artist\n\n[Eduardo Torres] \n\nLead Programmer \nLighting
-    \nUI Designer \nVFX Designer\n\n[Laura Arnau] \n\nLead Concept Artist\nUI Designer
-    \nUI Artist \n\n[Quim Malet] \n\nAssistant Game Designer \n3D Artist \n3D Animator
-    \nTexture Artist \nVFX Artist \n"
+  m_text: "EVV\xD6\n\nPresented by Infinitum \n\n\n[Carlos Piriz]\n\n3D Modeler Artist\nTexturer
+    Artist \nGame Designer  \nUI Artist \nAudio \n\n\n[Daniel Collado]\n\nProject
+    Manager\n3D Modeler Artist \nTexture Artist \nLevel Designer \nLighting \nUI
+    Artist \nVFX Artist \nAudio\n\n\n[Di Wu]\n\n3D Modeler Artist\nConcept Artist
+    \nTexture Artist \nVFX Artist \nUI Artist\n\n\n[Eduardo Torres] \n\nProject Manager\nProgrammer
+    \nUI Designer \nUI Artist\nAudio\n\n\n[Quim Malet] \n\nAssistant Game Designer
+    \n3D Artist \n3D Animator \nTexture Artist \nVFX Artist \n\n\n[Laura Arnau] \n\nConcept
+    Artist\nUI Artist \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c4a6ac8d70adac4faed5ce3f0df481e, type: 2}
   m_sharedMaterial: {fileID: -5351338767950424665, guid: 5c4a6ac8d70adac4faed5ce3f0df481e,
@@ -498,7 +595,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 515
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -522,12 +619,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1823313641}
-    characterCount: 547
+    characterCount: 542
     spriteCount: 0
     spaceCount: 120
-    wordCount: 76
+    wordCount: 75
     linkCount: 0
-    lineCount: 51
+    lineCount: 57
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -685,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6750fb9aa282ba4f977f02f2b9dd25d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoading: 28
+  delayBeforeLoading: 46
   sceneNameToLoad: MainMenu
 --- !u!1 &2106793417
 GameObject:
