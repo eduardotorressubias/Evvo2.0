@@ -42,6 +42,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Options");
     }
 
+    public void BossScene()
+    {
+        SceneManager.LoadScene("BossScene");
+    }
+
     public void ExitGame()
     {
         StartCoroutine(WaitExit());
