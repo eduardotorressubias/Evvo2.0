@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DentroArbol_OK.unity
     guid: 303c75ac419d6c24ba722d588cd8ea5c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: f851d677020b3204a86bba38c5d7fd82
   m_configObjects: {}

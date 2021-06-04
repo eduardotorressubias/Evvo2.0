@@ -62,7 +62,7 @@ public class DetectColectable : MonoBehaviour
             if (Input.GetKey("f"))
             {
                 sprite.SetActive(false);
-                if (!palanca)
+                if (!palanca && !portalBoss)
                 {
                     PortalEnable();
                 }
@@ -87,7 +87,8 @@ public class DetectColectable : MonoBehaviour
 
     void PortalEnable()
     {
-        if(ScoreManager.FindObjectOfType<ScoreManager>().score == 2)
+        Debug.Log("hola1");
+        if (ScoreManager.FindObjectOfType<ScoreManager>().score == 2)
         {
             portal.SetActive(true);
             pieza1.SetActive(true);
@@ -102,6 +103,7 @@ public class DetectColectable : MonoBehaviour
 
     void AbrePuerta()
     {
+        Debug.Log("hola2");
         if (PalancaManager.FindObjectOfType<PalancaManager>().score == 1)
         {
             if (palanca2)
@@ -125,6 +127,7 @@ public class DetectColectable : MonoBehaviour
     }
     void AbreBoss()
     {
+        Debug.Log("hola");
         if (PiedraMagicaManager.FindObjectOfType<PiedraMagicaManager>().score == 2)
         {
 
@@ -135,7 +138,7 @@ public class DetectColectable : MonoBehaviour
             
         }
 
-        else if (PiedraMagicaManager.FindObjectOfType<PiedraMagicaManager>().score != 2)
+        else
         {
             errorPortal.SetActive(true);
             error = true;
