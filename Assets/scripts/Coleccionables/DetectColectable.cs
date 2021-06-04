@@ -15,8 +15,11 @@ public class DetectColectable : MonoBehaviour
     public GameObject pieza1, pieza2;
     public bool palanca;
     public bool palanca2;
+    public bool portalBoss;
+    private bool portalBoss_acces= false;
     private PlayerAnimation puertaAnim;
     public Animator arbolAnim;
+    public Animator portal_Boss;
     
     void Start()
     {
@@ -27,6 +30,15 @@ public class DetectColectable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (portalBoss_acces)
+        {
+            counterTime += Time.deltaTime;
+            if (counterTime >= 1.3f)
+            {
+                portal.SetActive(true);
+                counterTime = 0;
+            }
+        }
 
         if(error == true)
         {
@@ -98,7 +110,19 @@ public class DetectColectable : MonoBehaviour
                 puertaAnim.OpenDoor();
             }
             
+            
         }
+        if(PiedraMagicaManager.FindObjectOfType<PiedraMagicaManager>().score == 2)
+        {
+
+            if (portalBoss)
+            {
+                portalBoss_acces = true;
+                portal_Boss.SetTrigger("abrir");
+
+            }
+        }
+
         else
         {
             errorPortal.SetActive(true);

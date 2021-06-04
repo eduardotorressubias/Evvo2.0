@@ -446,10 +446,10 @@ public class PlayerController : MonoBehaviour
             menuManager.WinScene();
         }
 
-        //if (other.tag == "check")
-        //{
-        //    PlayerPrefs.SetInt("PlayerController", 1);
-        //}
+        if (other.tag == "GoBoss" && god == false)
+        {
+            menuManager.BossScene();
+        }
 
         if (other.tag == "ToArbol" && god == false)
         {
