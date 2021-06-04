@@ -49,6 +49,7 @@ public class MenuManager : MonoBehaviour
 
     public void ExitGame()
     {
+        PlayerPrefs.DeleteAll();
         StartCoroutine(WaitExit());
 
     }

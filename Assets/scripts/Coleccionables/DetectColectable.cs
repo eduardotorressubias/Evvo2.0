@@ -66,9 +66,12 @@ public class DetectColectable : MonoBehaviour
                 {
                     PortalEnable();
                 }
-                else
+                else if(palanca)
                 {
                     AbrePuerta();
+                }
+                else if (portalBoss){
+                    AbreBoss();
                 }
 
                 pressF = true;
@@ -109,26 +112,34 @@ public class DetectColectable : MonoBehaviour
             {
                 puertaAnim.OpenDoor();
             }
-            
-            
+
+
         }
-        if(PiedraMagicaManager.FindObjectOfType<PiedraMagicaManager>().score == 2)
-        {
-
-            if (portalBoss)
-            {
-                portalBoss_acces = true;
-                portal_Boss.SetTrigger("abrir");
-
-            }
-        }
-
-        else
+        else if(PalancaManager.FindObjectOfType<PalancaManager>().score != 1)
         {
             errorPortal.SetActive(true);
             error = true;
         }
+        
 
+    }
+    void AbreBoss()
+    {
+        if (PiedraMagicaManager.FindObjectOfType<PiedraMagicaManager>().score == 2)
+        {
+
+            
+                portalBoss_acces = true;
+                portal_Boss.SetTrigger("abrir");
+
+            
+        }
+
+        else if (PiedraMagicaManager.FindObjectOfType<PiedraMagicaManager>().score != 2)
+        {
+            errorPortal.SetActive(true);
+            error = true;
+        }
     }
 
     void OnDrawGizmosSelected()
