@@ -16,7 +16,7 @@ public class TimeOfDay : MonoBehaviour
     private float numero = 0;
     private float numeroResta = 0;
     private float frames = 0;
-
+    public GameObject pajaros, pajaros2;
     private void Start()
     {
         numeroResta = transitionTime;
@@ -48,10 +48,18 @@ public class TimeOfDay : MonoBehaviour
             if (night.weight >= 0.99f)
             {
                 night.weight = 1f;
+                pajaros.SetActive(false);
+                pajaros.SetActive(true);
+                pajaros2.SetActive(false);
+                pajaros2.SetActive(true);
                 nightOn = true;
             }
             else if (night.weight <= 0.01)
             {
+                pajaros.SetActive(false);
+                pajaros.SetActive(true);
+                pajaros2.SetActive(false);
+                pajaros2.SetActive(true);
                 night.weight = 0f;
                 nightOn = false;
             }
