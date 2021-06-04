@@ -25,6 +25,9 @@ TagManager:
   - slidedown
   - PiezaPuerta
   - Palanca
+  - ToArbol
+  - ToGameScene
+  - check
   layers:
   - Default
   - TransparentFX

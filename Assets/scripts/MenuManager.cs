@@ -26,6 +26,15 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Animatica");
     }
 
+    public void ToArbol()
+    {
+        SceneManager.LoadScene("DentroArbol_OK");
+    }
+
+    public void ToGameScene()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
     public void Options()
     {
         SceneManager.LoadScene("Options");

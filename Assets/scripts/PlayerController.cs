@@ -59,7 +59,9 @@ public class PlayerController : MonoBehaviour
     private OptionsMenu optionsMenu;
 
 
-
+    //transicion de escenas
+    public Transform arbolToGamescene;
+    public bool arbol = false;
 
     //cameras
     public Camera mainCamera;
@@ -104,6 +106,17 @@ public class PlayerController : MonoBehaviour
     private bool dead = false;
 
 
+    private void Awake()
+    {
+        if (!arbol)
+        {
+            if (PlayerPrefs.GetInt("PlayerController") == 1)
+            {
+                transform.position = arbolToGamescene.position;
+            }
+        }
+       
+    }
     void Start()
     {
        
@@ -124,10 +137,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Raycast 
-
-        //Raycast();
-        
+       
 
         // Movimiento
 
@@ -434,6 +444,23 @@ public class PlayerController : MonoBehaviour
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             menuManager.WinScene();
         }
+
+        if (other.tag == "check")
+        {
+            PlayerPrefs.SetInt("PlayerController", 1);
+        }
+
+        if (other.tag == "ToArbol" && god == false)
+        {
+            menuManager.ToArbol();
+        }
+
+        if (other.tag == "ToGameScene" && god == false)
+        {
+            menuManager.ToGameScene();
+           
+        }
+
 
         //si el jugador recibe daño cuando haya pasado el coldown que reciba daño setee el coldown a 0 otra vez y haga una animación el player
         if (coldown == false && god == false)
