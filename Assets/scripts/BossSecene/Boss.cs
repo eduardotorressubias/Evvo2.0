@@ -61,15 +61,17 @@ public class Boss : MonoBehaviour
             
         }
         animations();
+        playerColdown();
 
         if (health <= 0)
         {
             tiempo += Time.deltaTime;
             if (tiempo >= animacion)
             {
+                idle = false;
                 atack_doble = false;
                 dead = true;
-                transform.rotation = Quaternion.LookRotation(Vector3.zero);
+                //transform.rotation = Quaternion.LookRotation(Vector3.zero);
                 DestroyEnemy();
             }
         }
@@ -103,8 +105,7 @@ public class Boss : MonoBehaviour
             Debug.Log("funcionaaaa");
             atack.SetActive(true);
             atack2.SetActive(true);
-            //yield return new WaitForSeconds(0.5f);
-           // vfx_atack.SetActive(true);
+            vfx_atack.SetActive(true);
         }
         else
         {
@@ -117,7 +118,7 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(8.18f);
         atack.SetActive(false);
         atack2.SetActive(false);
-        // vfx_atack.SetActive(false);
+        vfx_atack.SetActive(false);
         Debug.Log("falsooo");
         atack_doble = false;
         idle = true;
@@ -194,8 +195,10 @@ public class Boss : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            idle = false;
+            atack_doble = false;
             dead = true;
-            Destroy(gameObject, 5f);
+            
         }
         
     }
@@ -204,7 +207,12 @@ public class Boss : MonoBehaviour
     {
 
         Debug.Log(dead);
-        Destroy(gameObject);
+        vfx_atack.SetActive(false);
+        atack2.SetActive(false);
+        atack.SetActive(false);
+        Destroy(gameObject, 11.15f);
+        MenuManager.FindObjectOfType<MenuManager>().WinScene();
+
 
     }
 
