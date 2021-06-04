@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     public void GameScene()
     {
+        
         StartCoroutine(WaitPlay());
 
     }
@@ -33,6 +34,7 @@ public class MenuManager : MonoBehaviour
 
     public void ToGameScene()
     {
+        //CheckPoint.FindObjectOfType<CheckPoint>().LoadFromPlayerPrefs();
         SceneManager.LoadScene("GameScene");
     }
     public void Options()
@@ -70,6 +72,7 @@ public class MenuManager : MonoBehaviour
         //audioPlayer.PlaySound(0, 1, 1);
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("GameScene");
+        
     }
     private IEnumerator WaitExit()
     {

@@ -108,14 +108,15 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (!arbol)
-        {
-            if (PlayerPrefs.GetInt("PlayerController") == 1)
-            {
-                transform.position = arbolToGamescene.position;
-            }
-        }
        
+        //if (!arbol)
+        //{
+        //    if (PlayerPrefs.GetInt("PlayerController") == 1)
+        //    {
+        //        transform.position = arbolToGamescene.position;
+        //    }
+        //}
+
     }
     void Start()
     {
@@ -445,10 +446,10 @@ public class PlayerController : MonoBehaviour
             menuManager.WinScene();
         }
 
-        if (other.tag == "check")
-        {
-            PlayerPrefs.SetInt("PlayerController", 1);
-        }
+        //if (other.tag == "check")
+        //{
+        //    PlayerPrefs.SetInt("PlayerController", 1);
+        //}
 
         if (other.tag == "ToArbol" && god == false)
         {

@@ -4,35 +4,46 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    static public Transform [] checkpoint;
-    public static int check = 0;
-    void Awake()
+    static bool save = false;
+    private void Awake()
     {
-        for (int i = 0; i < checkpoint.Length; i++)
-        {
-            
-            if (PlayerPrefs.GetInt("CheckPoint") == i)
-            {
-                transform.position = checkpoint[i].position;
-            }
-        }
-        
+    
+            LoadFromPlayerPrefs();
+   
     }
 
-    // Update is called once per frame
-    void Update()
+    void SaveToPlayerPrefs(string savePositionData, string saveRotationData)
     {
-        
+        // Saving data to PlayerPrefs
+        PlayerPrefs.SetString(name + "_position", savePositionData);
+        PlayerPrefs.SetString(name + "_rotation", saveRotationData);
+    }
+
+    public void LoadFromPlayerPrefs()
+    {
+        string loadPositionData = PlayerPrefs.GetString(name + "_position", "");
+        string loadRotationData = PlayerPrefs.GetString(name + "_rotation", "");
+
+        transform.position = JsonUtility.FromJson<Vector3>(loadPositionData);
+        Physics.SyncTransforms();
+        transform.rotation = JsonUtility.FromJson<Quaternion>(loadRotationData);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "check")
+        if (other.tag == "check")
         {
-            Debug.Log("hola");
-            PlayerPrefs.SetInt("CheckPoint", check);
-            check++;
-        }
 
+            guardado();
+            save = true;
+        }
+    }
+
+    void guardado()
+    {
+        string savePositionData = JsonUtility.ToJson(transform.position);
+        string saveRotationData = JsonUtility.ToJson(transform.rotation);
+
+        SaveToPlayerPrefs(savePositionData, saveRotationData);
     }
 }
