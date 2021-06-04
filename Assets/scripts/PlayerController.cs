@@ -521,6 +521,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        //piedraMagica
+        if (other.tag == "PiedraMagica")
+        {
+            Destroy(other.gameObject);
+        }
 
     }
 

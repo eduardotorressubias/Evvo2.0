@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Palanca : MonoBehaviour
 {
-    public int PalancaValue = 1;
+    public static int PalancaValue = 1;
 
     private void OnTriggerEnter(Collider other)
     {

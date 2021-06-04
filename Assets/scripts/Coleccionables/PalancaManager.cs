@@ -5,7 +5,7 @@ using TMPro;
 
 public class PalancaManager : MonoBehaviour
 {
-public static PalancaManager instance;
+    public static PalancaManager instance;
     public TextMeshProUGUI text;
     public int score;
     void Start()

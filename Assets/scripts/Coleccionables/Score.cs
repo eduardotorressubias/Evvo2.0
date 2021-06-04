@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public int CoinValue = 1;
+    public static int CoinValue = 1;
 
     private void OnTriggerEnter(Collider other)
     {

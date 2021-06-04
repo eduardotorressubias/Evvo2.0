@@ -28,6 +28,7 @@ TagManager:
   - ToArbol
   - ToGameScene
   - check
+  - PiedraMagica
   layers:
   - Default
   - TransparentFX
